@@ -1,22 +1,44 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import Link from "next/link"
-import { Menu, User, Briefcase, HelpCircle, MessageCircle } from "lucide-react"
+import { useState } from "react";
+import Link from "next/link";
+import { Menu, User, Briefcase, HelpCircle, MessageCircle } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
-import { Separator } from "@/components/ui/separator"
+import { Button } from "@/components/ui/button";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { Separator } from "@/components/ui/separator";
 
 export default function Header() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
-    { title: "Find Workers", href: "/", icon: <User className="mr-2 h-4 w-4" /> },
-    { title: "Post a Job", href: "/", icon: <Briefcase className="mr-2 h-4 w-4" /> },
-    { title: "How it Works", href: "/", icon: <HelpCircle className="mr-2 h-4 w-4" /> },
-    { title: "Contact Us", href: "/contact-us", icon: <MessageCircle className="mr-2 h-4 w-4" /> },
-  ]
+    {
+      title: "Find Workers",
+      href: "/",
+      icon: <User className="mr-2 h-4 w-4" />,
+    },
+    {
+      title: "Post a Job",
+      href: "/",
+      icon: <Briefcase className="mr-2 h-4 w-4" />,
+    },
+    {
+      title: "How it Works",
+      href: "/",
+      icon: <HelpCircle className="mr-2 h-4 w-4" />,
+    },
+    {
+      title: "Contact Us",
+      href: "/contact-us",
+      icon: <MessageCircle className="mr-2 h-4 w-4" />,
+    },
+  ];
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -38,26 +60,32 @@ export default function Header() {
           ))}
           <Separator orientation="vertical" className="mx-1 h-6" />
           <div className="flex items-center gap-2">
-            <Button variant="signInButton" size="sm" className="px-4">
-              Sign In
-            </Button>
-            <Button variant="signUpButton" size="sm" className="px-4">
-              Sign Up
-            </Button>
+            <Link href={"/login"}>
+              <Button variant="signInButton" size="sm" className="px-4">
+                Sign In
+              </Button>
+            </Link>
+            <Link href={"/register"}>
+              <Button variant="signUpButton" size="sm" className="px-4">
+                Sign Up
+              </Button>
+            </Link>
           </div>
         </nav>
 
         {/* Mobile Navigation */}
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild className="lg:hidden">
-            <Button  size="icon" className="h-9 w-9 p-0">
+            <Button size="icon" className="h-9 w-9 p-0">
               <Menu className="h-5 w-5" />
               <span className="sr-only">Toggle menu</span>
             </Button>
           </SheetTrigger>
           <SheetContent side="right" className="w-[80%] sm:w-[350px]">
             <SheetHeader>
-              <SheetTitle className="text-left text-2xl font-bold text-primary">WorkerConnect</SheetTitle>
+              <SheetTitle className="text-left text-2xl font-bold text-primary">
+                WorkerConnect
+              </SheetTitle>
             </SheetHeader>
             <Separator className="my-4" />
             <div className="flex flex-col gap-4 py-4 px-4">
@@ -74,11 +102,19 @@ export default function Header() {
               ))}
               <Separator className="my-2" />
               <div className="flex flex-col gap-2 mt-2">
-                <Button variant="signInButton" className="w-full justify-start" onClick={() => setIsOpen(false)}>
+                <Button
+                  variant="signInButton"
+                  className="w-full justify-start"
+                  onClick={() => setIsOpen(false)}
+                >
                   <User className="mr-2 h-4 w-4" />
                   Sign In
                 </Button>
-                <Button variant="signUpButton" className="w-full justify-start" onClick={() => setIsOpen(false)}>
+                <Button
+                  variant="signUpButton"
+                  className="w-full justify-start"
+                  onClick={() => setIsOpen(false)}
+                >
                   <User className="mr-2 h-4 w-4" />
                   Sign Up
                 </Button>
@@ -88,6 +124,5 @@ export default function Header() {
         </Sheet>
       </div>
     </header>
-  )
+  );
 }
-

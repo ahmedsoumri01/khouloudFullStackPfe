@@ -11,7 +11,9 @@ const buttonVariants = cva(
       variant: {
         default:
           "bg-primary text-primary-foreground shadow-xs hover:bg-primary/90",
-
+          outline:
+          "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground",
+       
         signInButton:
           "bg-blue-600 rounded-full text-white font-semibold cursor-pointer hover:bg-white hover:border-2 hover:border-blue-600 hover:text-blue-500 ease-in-out duration-500",
         signUpButton:
