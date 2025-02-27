@@ -102,6 +102,7 @@ export default function Header() {
               ))}
               <Separator className="my-2" />
               <div className="flex flex-col gap-2 mt-2">
+              <Link href={"/login"}>
                 <Button
                   variant="signInButton"
                   className="w-full justify-start"
@@ -110,6 +111,8 @@ export default function Header() {
                   <User className="mr-2 h-4 w-4" />
                   Sign In
                 </Button>
+                </Link>
+                <Link href={"/register"}>
                 <Button
                   variant="signUpButton"
                   className="w-full justify-start"
@@ -118,6 +121,7 @@ export default function Header() {
                   <User className="mr-2 h-4 w-4" />
                   Sign Up
                 </Button>
+                </Link>
               </div>
             </div>
           </SheetContent>
