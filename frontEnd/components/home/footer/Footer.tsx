@@ -2,7 +2,17 @@ import React from "react";
 import FooterList from "./FooterList";
 import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
 import CopyRight from "@/components/home/footer/CopyRight";
-const footerData = [
+
+// Define the FooterItem type to match what's in FooterList.tsx
+type FooterItem = {
+  title: string;
+  type: "simple" | "websitedesc" | "socialmedia";
+  list?: string[];
+  description?: string;
+  icons?: { name: string; url: string; icon: React.ReactNode }[];
+};
+
+const footerData: FooterItem[] = [
   {
     title: "Our Website",
     type: "websitedesc",
@@ -19,7 +29,6 @@ const footerData = [
     type: "simple",
     list: ["Help Center", "Safety Center", "Community Guidelines"],
   },
-
   {
     title: "Follow Us",
     type: "socialmedia",
