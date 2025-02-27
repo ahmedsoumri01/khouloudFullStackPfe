@@ -15,7 +15,7 @@ export default function Header() {
     { title: "Find Workers", href: "/", icon: <User className="mr-2 h-4 w-4" /> },
     { title: "Post a Job", href: "/", icon: <Briefcase className="mr-2 h-4 w-4" /> },
     { title: "How it Works", href: "/", icon: <HelpCircle className="mr-2 h-4 w-4" /> },
-    { title: "Contact Us", href: "/", icon: <MessageCircle className="mr-2 h-4 w-4" /> },
+    { title: "Contact Us", href: "/contact-us", icon: <MessageCircle className="mr-2 h-4 w-4" /> },
   ]
 
   return (

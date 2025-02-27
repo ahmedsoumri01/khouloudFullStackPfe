@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
- import { Roboto } from "next/font/google";
- import ScrollToTop from "@/components/ScrollToTop";
+import { Roboto } from "next/font/google";
+import Footer from "@/components/home/footer/Footer";
+
+import ScrollToTop from "@/components/ScrollToTop";
 import "./globals.css";
 import AOSInit from "@/utils/Aos";
+import Header from "@/components/home/Header";
+
 const roboto = Roboto({
   weight: ["100", "300", "400", "500", "700", "900"], // Specify weights you need
   style: ["normal", "italic"], // Include styles if needed
@@ -24,9 +28,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${roboto.variable} ${roboto.variable} antialiased`}>
-      <AOSInit />
+        <AOSInit />
+              <Header />
+        
         {children}
-        <ScrollToTop/>
+        <Footer />
+        <ScrollToTop />
       </body>
     </html>
   );
