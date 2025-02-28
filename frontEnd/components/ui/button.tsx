@@ -11,9 +11,17 @@ const buttonVariants = cva(
       variant: {
         default:
           "bg-primary text-primary-foreground shadow-xs hover:bg-primary/90",
+          destructive:
+          "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
+          secondary:
+          "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
+          link: "text-primary underline-offset-4 hover:underline", 
+          yellow: "bg-[#ffcc00] font-bold text-black shadow-sm hover:bg-yellow/90",
+          red:  "bg-red-500 text-primary-foreground shadow hover:bg-red-500/90",
+       
           outline:
           "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground",
-       
+          ghost: "hover:bg-accent hover:text-accent-foreground",
         signInButton:
           "bg-blue-600 rounded-full text-white font-semibold cursor-pointer hover:bg-white hover:border-2 hover:border-blue-600 hover:text-blue-500 ease-in-out duration-500",
         signUpButton:
