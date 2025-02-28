@@ -16,7 +16,7 @@ const icons: Record<ServiceIcon, React.ElementType> = {
 }
 
 interface ServicesSectionProps {
-  services: Service[]
+  services: readonly Service[] // Change this to accept readonly arrays
 }
 
 export function ServicesSection({ services }: ServicesSectionProps) {
