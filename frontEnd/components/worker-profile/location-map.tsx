@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useRef } from "react"
-import { Loader } from "@googlemaps/js-api-loader"
+/* import { Loader } from "@googlemaps/js-api-loader" */
 
 interface LocationMapProps {
   latitude: number
@@ -14,12 +14,12 @@ export function LocationMap({ latitude, longitude, address }: LocationMapProps) 
 
   useEffect(() => {
     const initMap = async () => {
-      const loader = new Loader({
+ /*      const loader = new Loader({
         apiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "",
         version: "weekly",
-      })
+      }) */
 
-      const { Map } = await loader.importLibrary("maps")
+   /*    const { Map } = await loader.importLibrary("maps")
       const { Marker } = await loader.importLibrary("marker")
 
       const map = new Map(mapRef.current!, {
@@ -32,7 +32,7 @@ export function LocationMap({ latitude, longitude, address }: LocationMapProps) 
         map,
         position: { lat: latitude, lng: longitude },
         title: address,
-      })
+      }) */
     }
 
     initMap()
