@@ -338,7 +338,7 @@ export default function ContactPage({
           {faqs.map((faq, index) => (
             <div key={index} className="border-b border-gray-200 py-5">
               <button
-                className="flex justify-between items-center w-full text-left font-medium text-gray-900 focus:outline-none"
+                className="flex justify-between items-center  cursor-pointer w-full text-left font-medium text-gray-900 focus:outline-none"
                 onClick={() => toggleFaq(index)}
               >
                 <span>{faq.question}</span>

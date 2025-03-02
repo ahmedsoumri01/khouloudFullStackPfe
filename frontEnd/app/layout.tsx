@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import Footer from "@/components/home/footer/Footer";
-
+import { Toaster } from "@/components/ui/sonner"
 import ScrollToTop from "@/components/ScrollToTop";
 import "./globals.css";
 import AOSInit from "@/utils/Aos";
@@ -33,6 +33,7 @@ export default function RootLayout({
         
         {children}
         <Footer />
+        <Toaster />
         <ScrollToTop />
       </body>
     </html>
