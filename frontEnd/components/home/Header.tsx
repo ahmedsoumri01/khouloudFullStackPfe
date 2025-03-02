@@ -56,11 +56,11 @@ export default function Header() {
             <Link
               href={
                 user?.role === "admin"
-                  ? "/admin/dashboard"
+                  ? "/admin"
                   : user?.role === "user"
-                  ? "/client/dashboard"
+                  ? "/client"
                   : user?.role === "worker"
-                  ? "/worker/dashboard"
+                  ? "/worker"
                   : "/"
               }
               className="text-sm transition-colors font-semibold hover:text-blue-600 ease-in-out duration-300"

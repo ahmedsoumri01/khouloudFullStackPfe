@@ -8,6 +8,8 @@ interface User {
   firstName: string;
   lastName: string;
   email: string;
+  //role can be either "client" or "worker"
+  role: "user" | "worker" | "admin";
   [key: string]: string | number;
 }
 
@@ -67,7 +69,7 @@ const useAuthStore = create<AuthState>()(
           role,
         });
         const { user, token } = res.data ?? {};
- 
+
         toast.success("Inscription réussie!");
         // Redirect to login page after successful registration
         window.location.href = "/login";
@@ -106,7 +108,7 @@ const useAuthStore = create<AuthState>()(
           window.location.href = "/admin";
         } else if (user.role === "worker") {
           window.location.href = "/worker";
-        }else{
+        } else {
           window.location.href = "/client";
         }
       } catch (error) {

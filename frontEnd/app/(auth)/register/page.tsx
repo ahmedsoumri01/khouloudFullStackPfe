@@ -42,7 +42,7 @@ const formSchema = z.object({
 
 export default function RegisterPage() {
   const [isLoading, setIsLoading] = useState(false);
-  const { register: registerUser, error, clearError } = useAuthStore();
+  const { register: registerUser, error, clearError, isAuthenticated, user } = useAuthStore();
   const [selectedRole, setSelectedRole] = useState<string | undefined>();
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -85,7 +85,21 @@ export default function RegisterPage() {
       setIsLoading(false);
     }
   }
-  console.log(error, clearError);
+  // if use already authenticated, redirect to dashboard base on his role
+  if (isAuthenticated) {
+    if (user?.role === "admin") {
+      //redirect to /admin using  any redirect func
+      window.location.href = "/admin";
+
+      return;
+    } else if (user?.role === "worker") {
+      window.location.href = "/worker";
+      return;
+    } else {
+      window.location.href = "/user";
+      return;
+    }
+  }
   return (
     <div className="container flex min-h-screen flex-col items-center justify-center">
       <div className="mx-auto w-full max-w-md space-y-6">

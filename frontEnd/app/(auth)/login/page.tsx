@@ -29,7 +29,7 @@ const formSchema = z.object({
 
 export default function LoginPage() {
   const [isLoading, setIsLoading] = useState(false);
-  const { login } = useAuthStore(); // Access the login function from Zustand store
+  const { login, isAuthenticated, user } = useAuthStore(); // Access the login function from Zustand store
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -50,7 +50,21 @@ export default function LoginPage() {
       setIsLoading(false);
     }
   }
+  // if use already authenticated, redirect to dashboard base on his role
+  if (isAuthenticated) {
+    if (user?.role === "admin") {
+      //redirect to /admin using  any redirect func
+      window.location.href = "/admin";
 
+      return;
+    } else if (user?.role === "worker") {
+      window.location.href = "/worker";
+      return;
+    } else {
+      window.location.href = "/user";
+      return;
+    }
+  }
   return (
     <div className="container relative min-h-screen flex-col items-center justify-center grid lg:max-w-none lg:grid-cols-1 lg:px-0">
       <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
@@ -94,7 +108,11 @@ export default function LoginPage() {
               )}
             />
 
-            <Button type="submit" className="w-full cursor-pointer" disabled={isLoading}>
+            <Button
+              type="submit"
+              className="w-full cursor-pointer"
+              disabled={isLoading}
+            >
               {isLoading ? "Connexion..." : "Se connecter"}
             </Button>
           </form>
