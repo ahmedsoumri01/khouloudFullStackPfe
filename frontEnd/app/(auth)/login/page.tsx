@@ -61,7 +61,7 @@ export default function LoginPage() {
       window.location.href = "/worker";
       return;
     } else {
-      window.location.href = "/user";
+      window.location.href = "/client";
       return;
     }
   }
