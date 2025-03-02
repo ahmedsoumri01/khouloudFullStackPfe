@@ -63,6 +63,9 @@ exports.login = async (req, res) => {
       console.log("Invalid Credentials");
       return res.status(400).json({ message: "Invalid Credentials" });
     }
+    if(user.status === 'blocked'){
+      return res.status(403).json({ message: "Account is blocked" });
+    }
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
       expiresIn: 1000000,

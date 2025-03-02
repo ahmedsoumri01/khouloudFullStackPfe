@@ -12,7 +12,7 @@ const UserSchema = new mongoose.Schema(
 
     location: { type: String, trim: true },
     profileImage: { type: String, default: '' }, 
-    status: { type: String, enum: ['active', 'suspended', 'blocked'], default: 'active' },
+    status: { type: String, enum: ['active', 'blocked'], default: 'active' },
     isProfileCompleted: { type: Boolean, default: false },
     firstTimeLogin: { type: Boolean, default: true },
   },
