@@ -91,10 +91,11 @@ exports.createAdminAccount = async () => {
 
     // Create admin user
     const adminUser = new User({
-      name: "Admin",
+      firstName: "Admin",
+      lastName: "Admin",  
       email: "admin.admin@example.com",
       password: hashedPassword,
-      role: "admin", // Make sure the role field exists in your schema
+      role: "admin",  
       phone: "0000000000",
       location: "HQ",
       profileImage: "",

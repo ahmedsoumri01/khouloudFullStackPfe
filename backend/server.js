@@ -6,7 +6,7 @@ const authRoutes = require('./routes/auth.routes');
 const { createAdminAccount } = require('./controllers/auth.controller');
 const workerRoutes = require('./routes/worker.routes');
 const userRoutes = require('./routes/user.routes');
-
+const adminRoutes = require('./routes/admin.routes');
 
 // Load environment variables from .env file
 dotenv.config();
@@ -35,6 +35,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api/auth', authRoutes);
 app.use('/api/workers', workerRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/admin', adminRoutes);
 
 // Define a simple route for testing
 app.get('/', (req, res) => {
