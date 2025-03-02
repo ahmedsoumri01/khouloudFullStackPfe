@@ -31,15 +31,8 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import useAdminStore from "@/store/useAdminStore";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogFooter,
-} from "@/components/ui/dialog";
-import { Label } from "@/components/ui/label";
-
+import DeleteUserModal from "@/components/admin/DeleteUserModal";
+import UpdateUserModal from "@/components/admin/UpdateUserModal";
 interface User {
   _id: string;
   firstName: string;
@@ -71,7 +64,6 @@ export default function AllUsers() {
     error,
     getAllUsers,
     changeUserAccountStatus,
-    deleteUser,
     updateUser,
   } = useAdminStore();
 
@@ -104,8 +96,7 @@ export default function AllUsers() {
         header: ({ column }) => {
           return (
             <Button
-            className="cursor-pointer"
-
+              className="cursor-pointer"
               variant="ghost"
               onClick={() =>
                 column.toggleSorting(column.getIsSorted() === "asc")
@@ -130,8 +121,7 @@ export default function AllUsers() {
         header: ({ column }) => {
           return (
             <Button
-            className="cursor-pointer"
-
+              className="cursor-pointer"
               variant="ghost"
               onClick={() =>
                 column.toggleSorting(column.getIsSorted() === "asc")
@@ -158,7 +148,7 @@ export default function AllUsers() {
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="active">Active</SelectItem>
-              <SelectItem value="inactive">Inactive</SelectItem>
+              <SelectItem value="blocked">Inactive</SelectItem>
             </SelectContent>
           </Select>
         ),
@@ -194,15 +184,8 @@ export default function AllUsers() {
             >
               <Edit className="h-4 w-4" />
             </Button>
-            <Button
-              variant="ghost"
-              className="bg-red-500 text-white cursor-pointer transition-all duration-200 ease-in-out hover:bg-red-400 hover:text-white"
 
-              size="icon"
-              onClick={() => handleDeleteUser(row.original._id)}
-            >
-              <Trash className="h-4 w-4" />
-            </Button>
+            <DeleteUserModal userId={row.original._id} />
           </div>
         ),
       },
@@ -242,14 +225,6 @@ export default function AllUsers() {
       location: user.location || "",
     });
     setIsEditDialogOpen(true);
-  };
-
-  const handleDeleteUser = async (userId: string) => {
-    if (
-      window.confirm("Êtes-vous sûr de vouloir supprimer cet utilisateur ?")
-    ) {
-      await deleteUser(userId);
-    }
   };
 
   const handleUpdateUser = async () => {
@@ -355,86 +330,15 @@ export default function AllUsers() {
           Suivant
         </Button>
       </div>
+
       {/* Edit User Dialog */}
-      <Dialog open={isEditDialogOpen} onOpenChange={setIsEditDialogOpen}>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Modifier l'utilisateur</DialogTitle>
-          </DialogHeader>
-          <div className="grid gap-4 py-4">
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="firstName" className="text-right">
-                Prénom
-              </Label>
-              <Input
-                id="firstName"
-                name="firstName"
-                value={formData.firstName}
-                onChange={handleInputChange}
-                className="col-span-3 w-full"
-              />
-            </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="lastName" className="text-right">
-                Nom
-              </Label>
-              <Input
-                id="lastName"
-                name="lastName"
-                value={formData.lastName}
-                onChange={handleInputChange}
-                className="col-span-3"
-              />
-            </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="email" className="text-right">
-                Email
-              </Label>
-              <Input
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleInputChange}
-                className="col-span-3"
-              />
-            </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="phone" className="text-right">
-                Téléphone
-              </Label>
-              <Input
-                id="phone"
-                name="phone"
-                value={formData.phone}
-                onChange={handleInputChange}
-                className="col-span-3"
-              />
-            </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="location" className="text-right">
-                Localisation
-              </Label>
-              <Input
-                id="location"
-                name="location"
-                value={formData.location}
-                onChange={handleInputChange}
-                className="col-span-3"
-              />
-            </div>
-            
-          </div>
-          <DialogFooter>
-            <Button
-              variant="outline"
-              onClick={() => setIsEditDialogOpen(false)}
-            >
-              Annuler
-            </Button>
-            <Button onClick={handleUpdateUser}>Enregistrer</Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
+      <UpdateUserModal
+        isEditDialogOpen={isEditDialogOpen}
+        setIsEditDialogOpen={setIsEditDialogOpen}
+        formData={formData}
+        handleInputChange={handleInputChange}
+        handleUpdateUser={handleUpdateUser}
+      />
     </div>
   );
 }

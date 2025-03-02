@@ -36,8 +36,7 @@ interface AppSidebarProps extends React.ComponentProps<typeof Sidebar> {
   };
 }
 export function AppSidebar({ routes, ...props }: AppSidebarProps) {
-  console.log(routes);
-  return (
+   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
         {routes.teams && routes.teams.length > 0 && (
@@ -48,9 +47,9 @@ export function AppSidebar({ routes, ...props }: AppSidebarProps) {
         <SidebarGroupContent></SidebarGroupContent>
         <NavMain items={routes.navMain} />
       </SidebarContent>
-      <SidebarFooter>
+     { <SidebarFooter>
         <NavUser user={routes.user} />
-      </SidebarFooter>
+      </SidebarFooter>}
       <SidebarRail />
     </Sidebar>
   );

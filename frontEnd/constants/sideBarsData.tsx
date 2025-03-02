@@ -42,7 +42,7 @@ import {
           },
           {
             title: "Ajouter un utilisateur",
-            url: "/admin/user-management/add",
+            url: "/admin/user-management/add-user",
           },
         ],
       },
