@@ -14,7 +14,7 @@ export default function AdminLayout({
     <SidebarProvider>
       <div className="flex h-full">
         <AppSidebar routes={dashboardAdminRoutes} />
-        <SidebarInset className="flex-1 overflow-auto">{children}</SidebarInset>
+        <SidebarInset className="flex-1 overflow-auto p-2">{children}</SidebarInset>
       </div>
     </SidebarProvider>
   )
